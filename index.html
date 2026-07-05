@@ -167,6 +167,9 @@
                 } else {
                     const cred = await createUserWithEmailAndPassword(auth, email, pass);
                     await updateProfile(cred.user, { displayName: name });
+                    showToast("Account created! Please log in.", "info");
+                    await signOut(auth);
+                    if (window.currentMode === 'register') toggleAuthMode();
                 }
             } catch (err) {
                 showToast("Auth Error: " + err.message, "error");
