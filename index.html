@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Langit Nusantara Alliance</title>
+    <!-- STREAMING_CHUNK:Loading External Assets -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,7 +17,7 @@
     </script>
     <style>
         .glass { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); }
-        #appContainer { background-image: url('https://i.imgur.com/3MnEBgl.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh; }
+        #appContainer { background-image: url('https://i.imgur.com/3MnEBgl.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh; width: 100%; }
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -40,44 +41,44 @@
         <!-- STREAMING_CHUNK:Rendering Portal View -->
         <main id="portalView" class="flex-grow flex flex-col items-center justify-center px-6 relative z-10 fade-in">
             
-            <!-- Area Welcome di luar kotak -->
-            <div class="text-center mb-8">
-                <h1 class="text-4xl font-extrabold text-white tracking-wide">Welcome</h1>
-                <p id="displayName" class="text-xl text-cyan-400 font-bold mt-2">Airline Member</p>
+            <!-- Welcome di luar kotak -->
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-extrabold text-white tracking-wide">Welcome</h1>
+                <p id="displayName" class="text-lg text-cyan-400 font-bold mt-1">Airline Member</p>
             </div>
 
-            <!-- Kartu Menu -->
-            <div class="w-full max-w-xs glass rounded-3xl p-6 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6">
+            <!-- Kotak Menu Option -->
+            <div class="w-full max-w-xs glass rounded-3xl p-8 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6">
                 <div class="text-center">
-                    <h1 class="text-lg font-extrabold text-white tracking-wide uppercase">Menu Option</h1>
+                    <h1 class="text-lg font-extrabold text-white tracking-widest uppercase">Menu Option</h1>
                 </div>
-                <div class="grid grid-cols-3 gap-4 w-full">
+                <div class="grid grid-cols-3 gap-6 w-full">
                     <button class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform duration-150">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/25 transition-all"><i class="fa-solid fa-chart-simple"></i></div>
-                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase group-hover:text-cyan-400 transition-colors">AOTM</span>
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white text-2xl shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all"><i class="fa-solid fa-chart-simple"></i></div>
+                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase">AOTM</span>
                     </button>
                     <button class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform duration-150">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center text-white text-xl shadow-lg shadow-emerald-500/10 group-hover:shadow-emerald-500/25 transition-all"><i class="fa-solid fa-store"></i></div>
-                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase group-hover:text-emerald-400 transition-colors">Market</span>
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-all"><i class="fa-solid fa-store"></i></div>
+                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase">Market</span>
                     </button>
                     <button class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform duration-150">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center text-white text-xl shadow-lg shadow-purple-500/10 group-hover:shadow-purple-500/25 transition-all"><i class="fa-solid fa-images"></i></div>
-                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase group-hover:text-purple-400 transition-colors">Gallery</span>
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center text-white text-2xl shadow-lg shadow-purple-500/20 group-hover:shadow-purple-500/40 transition-all"><i class="fa-solid fa-images"></i></div>
+                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase">Gallery</span>
                     </button>
                 </div>
             </div>
         </main>
 
+        <!-- STREAMING_CHUNK:Rendering Footer -->
         <footer class="p-6 text-center z-10">
             <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">&copy; Langit Nusantara Alliance</p>
         </footer>
     </div>
 
-    <!-- STREAMING_CHUNK:Firebase Initialization -->
+    <!-- STREAMING_CHUNK:Firebase Setup -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
         const firebaseConfig = {
             apiKey: "AIzaSyAEy3q03-kvXqazUX4XrvDXCNAXf1nr2js",
             authDomain: "langit-nusantara-alliance.firebaseapp.com",
@@ -86,18 +87,12 @@
             messagingSenderId: "974270939055",
             appId: "1:974270939055:web:12a4f2f789ae13f88cb95a"
         };
-
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-
         onAuthStateChanged(auth, (user) => {
-            if (user) {
-                document.getElementById('displayName').innerText = user.displayName || "Airline Member";
-            }
+            if (user) document.getElementById('displayName').innerText = user.displayName || "Airline Member";
         });
     </script>
 </body>
 </html>
 ```eof
-
-Sekarang tampilan portal Anda sudah sesuai dengan struktur terbaru. Anda bisa langsung menyalin kode ini ke dalam `index.html` Anda. Selamat berkreasi!
