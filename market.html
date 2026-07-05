@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langit Nusantara Alliance - Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 500: '#0070f3', 950: '#021833' },
+                        accent: { teal: '#14b8a6', purple: '#8b5cf6' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); }
+        #appContainer { background-image: url('https://i.imgur.com/3MnEBgl.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; }
+        body { overflow-x: hidden; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased flex items-center justify-center p-0 sm:p-4">
+
+    <div class="w-full max-w-md h-[100vh] sm:h-[840px] text-slate-100 flex flex-col justify-between relative overflow-hidden sm:rounded-[40px] sm:shadow-2xl sm:border sm:border-slate-800/60" id="appContainer">
+        
+        <header class="p-6 flex justify-between items-center z-10">
+            <a href="index.html" class="text-slate-400 hover:text-white transition-colors">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <div class="flex items-center gap-3">
+                <span class="text-xs font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent leading-tight text-right">Market<br>Portal</span>
+            </div>
+        </header>
+
+        <main class="flex-grow flex flex-col items-center justify-center px-6 relative z-10">
+            <div class="w-full max-w-xs glass rounded-3xl p-5 shadow-2xl backdrop-blur-md">
+                <div class="w-full space-y-3">
+                    <button class="w-full relative overflow-hidden group p-4 rounded-xl bg-gradient-to-br from-slate-950/80 to-brand-950/40 border border-slate-800/80 hover:border-brand-500/40 text-left transition-all duration-300 shadow-lg active:scale-[0.98] block cursor-pointer">
+                        <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-brand-500/10 rounded-full group-hover:scale-125 transition-transform duration-500"></div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-500 to-blue-400 flex items-center justify-center text-white shrink-0 shadow-md overflow-hidden">
+                                <img src="https://i.imgur.com/kb7sMrX.png" alt="Buy Fleet" class="w-6 h-6 object-contain filter brightness-110">
+                            </div>
+                            <div>
+                                <span class="text-[8px] font-bold text-brand-500 uppercase tracking-wider block">Beli Unit Baru</span>
+                                <h2 class="text-sm font-extrabold text-white group-hover:text-brand-500 transition-colors">Buy Fleet</h2>
+                                <p class="text-[9px] text-slate-400 leading-tight">Mencari dan memperluas armada.</p>
+                            </div>
+                        </div>
+                    </button>
+                    <button class="w-full relative overflow-hidden group p-4 rounded-xl bg-gradient-to-br from-slate-950/80 to-accent-purple/20 border border-slate-800/80 hover:border-accent-purple/40 text-left transition-all duration-300 shadow-lg active:scale-[0.98] block cursor-pointer">
+                        <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-accent-purple/10 rounded-full group-hover:scale-125 transition-transform duration-500"></div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-accent-purple to-pink-500 flex items-center justify-center text-white shrink-0 shadow-md overflow-hidden">
+                                <img src="https://i.imgur.com/AHVCy7h.png" alt="Sell Fleet" class="w-6 h-6 object-contain filter brightness-110">
+                            </div>
+                            <div>
+                                <span class="text-[8px] font-bold text-accent-purple uppercase tracking-wider block">Jual Unit Lama</span>
+                                <h2 class="text-sm font-extrabold text-white group-hover:text-accent-purple transition-colors">Sell Fleet</h2>
+                                <p class="text-[9px] text-slate-400 leading-tight">Likuidasi armada operasional lama.</p>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="p-6 text-center z-10">
+            <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">&copy; Langit Nusantara Alliance</p>
+        </footer>
+    </div>
+</body>
+</html>
