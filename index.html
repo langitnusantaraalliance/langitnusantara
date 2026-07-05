@@ -19,8 +19,8 @@
         }
     </script>
     <style>
-        .glass { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); }
-        #appContainer { background-image: url('https://i.imgur.com/3MnEBgl.jpeg'); background-size: cover; background-position: center; }
+        .glass { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.06); }
+        #appContainer { background-image: url('https://i.imgur.com/3MnEBgl.jpeg'); background-size: cover; background-position: center; background-repeat: no-repeat; }
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         body { overflow-x: hidden; }
@@ -33,10 +33,10 @@
         <!-- Header -->
         <header class="p-6 flex justify-between items-center z-10 w-full">
             <div class="flex items-center gap-3">
-                <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-white/30 bg-slate-900 shadow-lg">
-                    <img src="https://i.imgur.com/Veu95Dk.png" alt="LNA" class="w-full h-full object-cover">
+                <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-white/30 shadow-lg shrink-0 flex items-center justify-center bg-slate-900">
+                    <img src="https://i.imgur.com/b5cUkSv.jpeg" alt="LNA" class="w-full h-full object-cover">
                 </div>
-                <span class="text-xs font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Langit Nusantara<br>Alliance</span>
+                <span class="text-xs font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent leading-tight">Langit Nusantara<br>Alliance</span>
             </div>
             <div class="flex justify-end">
                 <button id="logoutBtn" class="hidden text-slate-400 hover:text-white transition-colors" onclick="handleLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
@@ -78,19 +78,42 @@
 
         <!-- PORTAL VIEW -->
         <main id="portalView" class="hidden flex-grow flex flex-col items-center justify-center px-6 relative z-10 fade-in w-full">
-            <div class="w-full max-w-xs glass rounded-3xl p-6 flex flex-col items-center gap-6 text-center">
-                <div class="w-full bg-slate-900/60 p-4 rounded-2xl border border-slate-700/50">
-                    <div class="flex justify-between items-center mb-2">
-                        <div class="flex items-center gap-2"><i class="fa-solid fa-plane text-cyan-400"></i> <span class="text-[10px] font-bold">VERIFIED AIRLINE</span></div>
-                        <span class="text-[9px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">ACTIVE</span>
-                    </div>
-                    <div id="displayName" class="text-sm font-bold tracking-wide text-left truncate">Airline Name</div>
+            <div class="w-full max-w-xs glass rounded-3xl p-6 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6 text-center">
+                
+                <div class="text-center">
+                    <h1 class="text-lg font-extrabold text-white tracking-wide">Selamat Datang</h1>
+                    <p class="text-[10px] text-slate-300 font-medium mt-1">Silakan pilih menu layanan di bawah ini</p>
                 </div>
-                <h2 class="text-xs font-bold uppercase tracking-widest opacity-60">Navigation System</h2>
-                <div class="grid grid-cols-3 gap-3 w-full">
-                    <button class="bg-cyan-600/20 p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-cyan-600/40 transition-all"><i class="fa-solid fa-chart-line text-lg text-cyan-400"></i><span class="text-[9px] font-bold">AOTM</span></button>
-                    <button class="bg-emerald-600/20 p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-emerald-600/40 transition-all"><i class="fa-solid fa-store text-lg text-emerald-400"></i><span class="text-[9px] font-bold">MARKET</span></button>
-                    <button class="bg-purple-600/20 p-4 rounded-2xl flex flex-col items-center gap-2 hover:bg-purple-600/40 transition-all"><i class="fa-solid fa-images text-lg text-purple-400"></i><span class="text-[9px] font-bold">GALLERY</span></button>
+
+                <div class="grid grid-cols-3 gap-4 w-full">
+                    
+                    <button class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform duration-150">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white text-xl shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/25 transition-all">
+                            <i class="fa-solid fa-chart-simple"></i>
+                        </div>
+                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase group-hover:text-cyan-400 transition-colors">
+                            AOTM
+                        </span>
+                    </button>
+
+                    <button class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform duration-150">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center text-white text-xl shadow-lg shadow-emerald-500/10 group-hover:shadow-emerald-500/25 transition-all">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase group-hover:text-emerald-400 transition-colors">
+                            Market
+                        </span>
+                    </button>
+
+                    <button class="flex flex-col items-center gap-2 group cursor-pointer active:scale-95 transition-transform duration-150">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center text-white text-xl shadow-lg shadow-purple-500/10 group-hover:shadow-purple-500/25 transition-all">
+                            <i class="fa-solid fa-images"></i>
+                        </div>
+                        <span class="text-[10px] font-extrabold text-slate-200 tracking-wider uppercase group-hover:text-purple-400 transition-colors">
+                            Gallery
+                        </span>
+                    </button>
+                    
                 </div>
             </div>
         </main>
