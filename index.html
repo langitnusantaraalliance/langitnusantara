@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Langit Nusantara Alliance</title>
-    <!-- STREAMING_CHUNK:Loading External Assets -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,7 +23,6 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased">
 
-    <!-- STREAMING_CHUNK:Rendering Main Container -->
     <div class="w-full min-h-screen text-slate-100 flex flex-col justify-between relative overflow-hidden" id="appContainer">
         
         <header class="p-6 flex justify-between items-center z-10">
@@ -36,9 +34,12 @@
                     Langit Nusantara<br>Alliance
                 </span>
             </div>
+            <!-- Tombol Logout -->
+            <button id="logoutBtn" class="p-2 text-slate-400 hover:text-red-400 transition-colors">
+                <i class="fa-solid fa-right-from-bracket text-xl"></i>
+            </button>
         </header>
 
-        <!-- STREAMING_CHUNK:Rendering Portal View -->
         <main id="portalView" class="flex-grow flex flex-col items-center justify-center px-6 relative z-10 fade-in">
             
             <!-- Welcome di luar kotak -->
@@ -69,30 +70,45 @@
             </div>
         </main>
 
-        <!-- STREAMING_CHUNK:Rendering Footer -->
         <footer class="p-6 text-center z-10">
             <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">&copy; Langit Nusantara Alliance</p>
         </footer>
     </div>
 
-    <!-- STREAMING_CHUNK:Firebase Setup -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyAEy3q03-kvXqazUX4XrvDXCNAXf1nr2js",
-            authDomain: "langit-nusantara-alliance.firebaseapp.com",
-            projectId: "langit-nusantara-alliance",
-            storageBucket: "langit-nusantara-alliance.firebasestorage.app",
-            messagingSenderId: "974270939055",
-            appId: "1:974270939055:web:12a4f2f789ae13f88cb95a"
-        };
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        
+        // ... (firebaseConfig tetap sama) ...
+        
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+
+        // Handle Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth).then(() => {
+                window.location.href = 'login.html';
+            }).catch((error) => {
+                console.error("Gagal logout:", error);
+            });
+        });
+
         onAuthStateChanged(auth, (user) => {
-            if (user) document.getElementById('displayName').innerText = user.displayName || "Airline Member";
+            if (user) {
+                document.getElementById('displayName').innerText = user.displayName || "Airline Member";
+            } else {
+                // Redirect ke login jika belum login
+                window.location.href = 'login.html';
+            }
         });
     </script>
 </body>
 </html>
-```eof
+```
+
+### Penjelasan perubahan:
+1.  **Tombol Logout:** Saya menambahkan elemen `<button>` dengan ikon `fa-right-from-bracket` di bagian header agar terlihat profesional.
+2.  **Fungsi `signOut`:** Menggunakan fungsi bawaan Firebase untuk menghapus sesi pengguna.
+3.  **Redirect Otomatis:** Di dalam `onAuthStateChanged`, jika status pengguna menjadi `null` (logout), maka aplikasi akan otomatis mengarahkan (`window.location.href`) kembali ke `login.html`.
+
+Silakan terapkan perubahan ini ke file `index.html` Anda. Jika ada kendala, beri tahu saya ya!
