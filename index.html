@@ -74,6 +74,7 @@
         </main>
         <!-- PORTAL VIEW -->
         <main id="portalView" class="hidden flex-grow flex flex-col items-center justify-center px-6 relative z-10 fade-in w-full">
+            <h2 id="welcomeDisplay" class="text-white text-xl font-bold mb-6 text-center">Welcome,</h2>
             <div class="w-full max-w-xs glass rounded-3xl p-6 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6 text-center">
                 
                 <div class="text-center">
@@ -144,10 +145,11 @@
                 authView.classList.add('hidden');
                 portalView.classList.remove('hidden');
                 logoutBtn.classList.remove('hidden');
+                document.getElementById('welcomeDisplay').innerText = "Welcome, " + (user.displayName || "Airline Member");
             } else {
                 authView.classList.remove('hidden');
                 portalView.classList.add('hidden');
-                logoutBtn.classList.hidden = true; // Fixed logic
+                logoutBtn.classList.add('hidden');
             }
         });
 
