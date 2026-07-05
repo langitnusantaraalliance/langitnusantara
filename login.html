@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Langit Nusantara Alliance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&family=Inter:wght=400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            500: '#0070f3',
+                            600: '#0062d1',
+                            950: '#021833',
+                        },
+                        accent: {
+                            teal: '#14b8a6',
+                            purple: '#8b5cf6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        #appContainer {
+            background-image: url('https://i.imgur.com/3MnEBgl.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Animasi Transisi Halus */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased flex items-center justify-center p-0 sm:p-4">
+
+    <!-- Container Utama Simulator Smartphone / Aplikasi -->
+    <div class="w-full max-w-md h-[100vh] sm:h-[840px] text-slate-100 flex flex-col justify-between relative overflow-hidden sm:rounded-[40px] sm:shadow-2xl sm:border sm:border-slate-800/60" id="appContainer">
+        
+        <!-- Header Utama dengan Logo -->
+        <header class="p-6 flex justify-between items-center z-10">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-white/30 shadow-lg shrink-0 flex items-center justify-center bg-slate-900">
+                    <img src="https://i.imgur.com/b5cUkSv.jpeg" alt="Langit Nusantara Alliance" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/0070f3/ffffff?text=LNA'">
+                </div>
+                <span class="text-xs font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent leading-tight">
+                    Langit Nusantara<br>Alliance
+                </span>
+            </div>
+        </header>
+
+        <!-- Container Pesan Alert / Notifikasi Toast -->
+        <div id="toastContainer" class="absolute top-20 left-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+        <!-- Main Form Area -->
+        <main class="flex-grow flex flex-col items-center justify-center px-6 relative z-10">
+            <div class="w-full max-w-xs glass rounded-3xl p-8 shadow-2xl backdrop-blur-md flex flex-col items-center gap-6 fade-in">
+                
+                <!-- Judul Autentikasi -->
+                <div class="text-center w-full">
+                    <h1 id="authTitle" class="text-xl font-extrabold text-white tracking-wide transition-all">Login Akun</h1>
+                    <p id="authSubtitle" class="text-[10px] text-slate-300 font-medium mt-1 transition-all">Masukkan kredensial maskapai Anda untuk melanjutkan</p>
+                </div>
+
+                <!-- Form Masuk / Daftar -->
+                <form id="loginForm" class="w-full flex flex-col gap-4" onsubmit="handleAuthSubmit(event)">
+                    
+                    <!-- Field Nama Maskapai -->
+                    <div class="relative group">
+                        <input type="text" id="airlineName" required placeholder="Nama Maskapai" class="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl py-3 pl-4 pr-10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+                        <i class="fa-solid fa-plane absolute right-4 top-3.5 text-slate-500 text-xs"></i>
+                    </div>
+
+                    <!-- Field Kata Sandi -->
+                    <div class="relative group">
+                        <input type="password" id="airlinePassword" required placeholder="Kata Sandi Rahasia" class="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl py-3 pl-4 pr-10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+                        <i class="fa-solid fa-lock absolute right-4 top-3.5 text-slate-500 text-xs"></i>
+                    </div>
+
+                    <!-- Tombol Masuk / Daftar Dinamis -->
+                    <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-widest shadow-lg shadow-cyan-500/20 active:scale-95 transition-all">
+                        Masuk ke Deck
+                    </button>
+                </form>
+
+                <!-- Toggle Mode Login vs Daftar -->
+                <div class="text-[9px] text-slate-400 text-center select-none">
+                    <span id="toggleText">Belum punya akun?</span> 
+                    <a href="javascript:void(0)" onclick="toggleAuthMode()" id="toggleBtn" class="text-cyan-400 font-bold hover:underline ml-1">Daftar sekarang</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Hak Cipta -->
+        <footer class="p-6 text-center z-10">
+            <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">
+                &copy; Langit Nusantara Alliance
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Integrasi Firebase Cloud Moduler -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            createUserWithEmailAndPassword,
+            updateProfile
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        // ========================================================
+        // SILAKAN TEMPELKAN CONFIG FIREBASE ANDA DI SINI:
+        // ========================================================
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // ========================================================
+
+        let auth;
+        let isFirebaseAvailable = false;
+
+        if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+            try {
+                const app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                isFirebaseAvailable = true;
+                console.log("Firebase Auth terkoneksi ke login.html!");
+            } catch (err) {
+                console.warn("Gagal inisialisasi Firebase. Berpindah ke mode simulasi.", err);
+            }
+        }
+
+        window.handleAuthSubmit = async function(event) {
+            event.preventDefault();
+            const airlineName = document.getElementById('airlineName').value.trim();
+            const password = document.getElementById('airlinePassword').value;
+
+            // Memformulasikan Nama Maskapai menjadi format email unik di latar belakang
+            const cleanAirlineString = airlineName.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const formattedEmail = cleanAirlineString + '@lna.com';
+
+            showToast("Menghubungkan gerbang langit...", "info");
+
+            if (isFirebaseAvailable) {
+                try {
+                    if (currentMode === 'login') {
+                        await signInWithEmailAndPassword(auth, formattedEmail, password);
+                        showToast(`Selamat datang kembali, ${airlineName}!`, "success");
+                        
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+                    } else {
+                        const userCredential = await createUserWithEmailAndPassword(auth, formattedEmail, password);
+                        await updateProfile(userCredential.user, { displayName: airlineName });
+                        showToast("Pendaftaran Maskapai berhasil! Mengalihkan...", "success");
+                        
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+                    }
+                } catch (error) {
+                    console.error("Kesalahan autentikasi:", error);
+                    let errMsg = "Nama maskapai atau sandi kurang tepat.";
+                    if (error.code === 'auth/email-already-in-use') {
+                        errMsg = "Nama maskapai ini sudah terdaftar.";
+                    } else if (error.code === 'auth/weak-password') {
+                        errMsg = "Sandi terlalu lemah (minimal 6 karakter).";
+                    }
+                    showToast(errMsg, "error");
+                }
+            } else {
+                showToast(`[Simulasi] Sukses! Maskapai: ${airlineName}`, "success");
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }
+        };
+    </script>
+
+    <!-- Script Pengendali UI Interaktif -->
+    <script>
+        let currentMode = 'login';
+
+        function toggleAuthMode() {
+            const authTitle = document.getElementById('authTitle');
+            const authSubtitle = document.getElementById('authSubtitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const toggleText = document.getElementById('toggleText');
+            const toggleBtn = document.getElementById('toggleBtn');
+            
+            if (currentMode === 'login') {
+                currentMode = 'register';
+                authTitle.innerText = "Daftar Akun";
+                authSubtitle.innerText = "Daftarkan nama maskapai baru untuk bergabung";
+                submitBtn.innerText = "Daftar Maskapai";
+                toggleText.innerText = "Sudah punya akun?";
+                toggleBtn.innerText = "Masuk sekarang";
+            } else {
+                currentMode = 'login';
+                authTitle.innerText = "Login Akun";
+                authSubtitle.innerText = "Masukkan kredensial maskapai Anda untuk melanjutkan";
+                submitBtn.innerText = "Masuk ke Deck";
+                toggleText.innerText = "Belum punya akun?";
+                toggleBtn.innerText = "Daftar sekarang";
+            }
+        }
+
+        function showToast(message, type = "info") {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            
+            let typeClasses = "bg-slate-900 border-cyan-500/20 text-cyan-300";
+            let icon = '<i class="fa-solid fa-circle-info"></i>';
+
+            if (type === "success") {
+                typeClasses = "bg-emerald-950/90 border-emerald-500/30 text-emerald-300";
+                icon = '<i class="fa-solid fa-circle-check"></i>';
+            } else if (type === "error") {
+                typeClasses = "bg-rose-950/90 border-rose-500/30 text-rose-300";
+                icon = '<i class="fa-solid fa-triangle-exclamation"></i>';
+            }
+
+            toast.className = `glass ${typeClasses} p-3.5 rounded-xl text-xs flex items-center gap-2.5 shadow-xl border fade-in pointer-events-auto`;
+            toast.innerHTML = `
+                <div class="text-sm">${icon}</div>
+                <div class="font-bold flex-1">${message}</div>
+                <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-[10px]"></i></button>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-[-10px]');
+                toast.style.transition = 'all 0.3s ease-in-out';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        window.toggleAuthMode = toggleAuthMode;
+        window.showToast = showToast;
+    </script>
+
+</body>
+</html>
