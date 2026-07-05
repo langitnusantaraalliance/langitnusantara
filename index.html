@@ -141,7 +141,20 @@
             document.getElementById('toggleText').innerText = window.currentMode === 'login' ? "Don't have an account?" : "Already have an account?";
             document.getElementById('toggleBtn').innerText = window.currentMode === 'login' ? "Sign up now" : "Log in now";
         }
-        function showToast(msg, type) { /* ... same toast code ... */ }
+
+        // FUNGSI INI ADALAH PERBAIKANNYA
+        function showToast(msg, type) {
+            console.log("Toast:", msg); // Cek di Console (F12)
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const color = type === 'error' ? 'bg-red-500' : 'bg-green-500';
+            toast.className = `p-4 mb-4 rounded-xl text-white font-bold shadow-lg ${color} transition-all`;
+            toast.innerText = msg;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
     </script>
 </body>
 </html>
+```
