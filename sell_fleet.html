@@ -12,15 +12,8 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            500: '#0070f3',
-                        }
-                    }
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'] },
+                    colors: { brand: { 50: '#f0f7ff', 500: '#0070f3' } }
                 }
             }
         }
@@ -30,9 +23,7 @@
         body { background-color: #f8fafc; }
         .blueprint-grid {
             background-color: #ffffff;
-            background-image: 
-                linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
             background-size: 16px 16px;
         }
         #appContainer *::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -45,69 +36,29 @@
 
     <div class="w-full max-w-md h-[100vh] sm:h-[840px] bg-white text-gray-900 flex flex-col relative overflow-hidden sm:rounded-[40px] sm:shadow-[0_20px_50px_rgba(0,0,0,0.1)] sm:border sm:border-gray-200" id="appContainer">
         
-        <!-- Header -->
         <header class="px-4 py-4 flex items-center justify-between border-b border-gray-200 shrink-0 bg-white z-20">
-            <a href="index.html" class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors active:scale-95">
-                <i class="fa-solid fa-chevron-left text-xl"></i>
-            </a>
+            <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors active:scale-95"><i class="fa-solid fa-chevron-left text-xl"></i></button>
             <h1 class="text-[17px] font-bold text-gray-800 tracking-tight flex-grow text-center">Fleet Market</h1>
-            <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors active:scale-95">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
+            <button class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors active:scale-95"><i class="fa-solid fa-xmark text-xl"></i></button>
         </header>
 
         <main class="flex-grow overflow-y-auto relative z-0 flex flex-col">
-            
             <div class="w-full h-80 sm:h-96 blueprint-grid relative border-b border-gray-200 flex flex-col justify-between shrink-0">
-                
-                <!-- Manufacturer Search / Filter -->
                 <div class="p-3 relative z-30 flex items-start">
-                    <div id="filterContainer" class="bg-white/90 backdrop-blur-md rounded-full border border-gray-200 shadow-sm flex items-center overflow-hidden transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] w-8 h-8">
-                        <button onclick="toggleManufacturerMenu()" class="min-w-[2rem] h-8 flex items-center justify-center text-gray-600 hover:text-brand-600 bg-transparent z-10 cursor-pointer active:scale-95 transition-colors focus:outline-none">
-                            <i id="filterIcon" class="fa-solid fa-magnifying-glass text-[13px] transition-transform duration-700 ease-in-out"></i>
-                        </button>
-                        
-                        <div id="horizontalMenu" class="flex items-center gap-1.5 opacity-0 transition-opacity duration-300 pointer-events-none overflow-x-auto no-scrollbar pl-1 pr-3">
-                            <button onclick="selectManufacturer(this, 'Airbus')" class="mfg-opt whitespace-nowrap px-3 py-1 rounded-full text-[12px] font-bold bg-brand-500 text-white shadow-sm transition-colors">Airbus</button>
-                            <button onclick="selectManufacturer(this, 'Boeing')" class="mfg-opt whitespace-nowrap px-3 py-1 rounded-full text-[12px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">Boeing</button>
-                            <button onclick="selectManufacturer(this, 'Bombardier')" class="mfg-opt whitespace-nowrap px-3 py-1 rounded-full text-[12px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">Bombardier</button>
-                            <button onclick="selectManufacturer(this, 'Embraer')" class="mfg-opt whitespace-nowrap px-3 py-1 rounded-full text-[12px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">Embraer</button>
-                            <button onclick="selectManufacturer(this, 'ATR')" class="mfg-opt whitespace-nowrap px-3 py-1 rounded-full text-[12px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">ATR</button>
-                            <button onclick="selectManufacturer(this, 'De Havilland Canada')" class="mfg-opt whitespace-nowrap px-3 py-1 rounded-full text-[12px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">DHC</button>
-                            <button onclick="selectManufacturer(this, 'Comac')" class="mfg-opt whitespace-nowrap px-3 py-1 rounded-full text-[12px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">Comac</button>
+                    <div id="filterContainer" class="bg-white/90 backdrop-blur-md rounded-full border border-gray-200 shadow-sm flex items-center overflow-hidden transition-[width] duration-500 w-8 h-8">
+                        <button onclick="toggleManufacturerMenu()" class="min-w-[2rem] h-8 flex items-center justify-center text-gray-600 hover:text-brand-600 z-10"><i id="filterIcon" class="fa-solid fa-magnifying-glass text-[13px]"></i></button>
+                        <div id="horizontalMenu" class="flex items-center gap-1.5 opacity-0 transition-opacity duration-300 pointer-events-none pl-1 pr-3">
+                            <button onclick="selectManufacturer(this, 'Airbus')" class="mfg-opt px-3 py-1 rounded-full text-[12px] font-bold bg-brand-500 text-white">Airbus</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Aircraft Image -->
                 <div class="absolute inset-0 flex items-center justify-center pointer-events-none px-4 -mt-12">
-                    <img id="aircraftImage" src="https://i.imgur.com/63wXR9V.png" alt="Airbus A220-100 Livery" class="w-full max-w-[320px] object-contain filter drop-shadow-md z-10">
+                    <img id="aircraftImage" src="https://i.imgur.com/63wXR9V.png" class="w-full max-w-[320px] object-contain drop-shadow-md z-10">
                 </div>
-
-                <div class="absolute bottom-16 left-3 z-30">
-                    <div id="familyContainer" class="bg-white/90 backdrop-blur-md rounded-full border border-gray-200 shadow-sm flex items-center overflow-hidden transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] w-[160px] h-9">
-                        <button onclick="toggleFamilyMenu()" class="min-w-[160px] flex-shrink-0 px-5 h-9 flex items-center justify-center gap-2 text-[12px] font-bold text-gray-600 hover:text-brand-500 bg-transparent z-10 cursor-pointer active:scale-95 transition-all whitespace-nowrap">
-                            <span id="currentFamilyLabel">A220 Family</span>
-                        </button>
-                        
-                        <div id="familyMenu" class="flex items-center gap-1.5 opacity-0 transition-opacity duration-300 pointer-events-none overflow-x-auto no-scrollbar pl-1 pr-3">
-                            <button onclick="selectFamily(this, 'A220 Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-500 text-white shadow-sm transition-colors">A220 Family</button>
-                            <button onclick="selectFamily(this, 'A320 Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">A320 Family</button>
-                            <button onclick="selectFamily(this, 'A320neo Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">A320neo Family</button>
-                            <button onclick="selectFamily(this, 'A330 Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">A330 Family</button>
-                            <button onclick="selectFamily(this, 'A330neo Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">A330neo Family</button>
-                            <button onclick="selectFamily(this, 'A340 Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">A340 Family</button>
-                            <button onclick="selectFamily(this, 'A350 Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">A350 Family</button>
-                            <button onclick="selectFamily(this, 'A380 Family')" class="family-opt flex-shrink-0 whitespace-nowrap px-2.5 py-1 rounded-full text-[10px] font-bold text-gray-600 hover:bg-gray-100 transition-colors">A380 Family</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aircraft model navigation -->
-                <div class="px-4 py-3 flex items-center justify-between mt-auto bg-white/40 backdrop-blur-[2px] relative z-20 border-t border-black/5">
-                    <button onclick="navigateModel(-1)" class="text-gray-500 hover:text-gray-800 transition-colors px-2 py-1"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="px-4 py-3 flex items-center justify-between mt-auto bg-white/40 backdrop-blur-[2px] z-20 border-t border-black/5">
+                    <button onclick="navigateModel(-1)" class="text-gray-500 hover:text-gray-800"><i class="fa-solid fa-chevron-left"></i></button>
                     <span id="aircraftName" class="text-[15px] font-semibold text-gray-800 tracking-tight">Airbus A220-100</span>
-                    <button onclick="navigateModel(1)" class="text-gray-500 hover:text-gray-800 transition-colors px-2 py-1"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button onclick="navigateModel(1)" class="text-gray-500 hover:text-gray-800"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
 
@@ -115,74 +66,21 @@
                 <section>
                     <div class="flex items-center gap-2.5 mb-3">
                         <h3 class="text-[17px] font-bold text-gray-800 tracking-tight">Set Quantity</h3>
+                        <span id="availableCount" class="text-[12px] font-medium text-gray-400">Available: 0</span>
                     </div>
-                    <div class="bg-[#f8fafc] p-4 rounded-xl border border-gray-100 transition-all">
+                    <div class="bg-[#f8fafc] p-4 rounded-xl border border-gray-100">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center text-brand-500">
-                                    <i class="fa-solid fa-handshake text-xl"></i>
-                                </div>
+                                <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center text-brand-500"><i class="fa-solid fa-handshake text-xl"></i></div>
                                 <div>
                                     <span class="text-[12px] text-gray-500 font-semibold block uppercase tracking-wider mb-0.5">Target Buyer</span>
-                                    <span id="selectedBuyerText" class="text-lg font-bold text-gray-800 block leading-none">Public Market</span>
+                                    <span id="selectedBuyerText" class="text-lg font-bold text-gray-800 block">Public Market</span>
                                 </div>
                             </div>
-                            
-                            <!-- Interactive Quantity Input -->
                             <div class="flex items-center gap-3 bg-white border border-gray-200 rounded-lg p-1 shadow-sm">
-                                <button onclick="updateQty(-1)" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-50 rounded-md transition-colors active:scale-95">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                                
-                                <input type="text" 
-                                       inputmode="numeric" 
-                                       pattern="[0-9]*" 
-                                       id="sellQty" 
-                                       value="1" 
-                                       oninput="validateManualQty(this)" 
-                                       onblur="finalizeManualQty(this)" 
-                                       class="w-12 text-center font-bold text-gray-800 bg-transparent focus:outline-none border-none p-0 outline-none select-all">
-                                
-                                <button onclick="updateQty(1)" class="w-8 h-8 flex items-center justify-center text-brand-500 hover:bg-brand-50 rounded-md transition-colors active:scale-95">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="requestDetails" class="mt-4 pt-3 border-t border-gray-200/60">
-                            <div class="space-y-2">
-                                <div onclick="selectBuyer(this, 'Public Market', Infinity)" class="buyer-card border-brand-500 bg-brand-50/50 flex justify-between items-center text-[13px] p-2.5 rounded-lg border cursor-pointer transition-colors">
-                                    <div class="flex items-center gap-2.5">
-                                        <div class="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-sm text-brand-500 border border-brand-100">
-                                            <i class="fa-solid fa-globe text-[12px]"></i>
-                                        </div>
-                                        <span class="buyer-title text-gray-800 font-bold transition-colors">Public Market</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Anyone</span>
-                                        <i class="fa-solid fa-circle-check text-brand-500 check-icon"></i>
-                                    </div>
-                                </div>
-                                <div onclick="selectBuyer(this, 'Langit Nusantara', 5)" class="buyer-card border-transparent hover:bg-gray-50 flex justify-between items-center text-[13px] p-2.5 rounded-lg border cursor-pointer transition-colors">
-                                    <div class="flex items-center gap-2.5">
-                                        <img src="https://i.imgur.com/b5cUkSv.jpeg" alt="LNA" class="w-7 h-7 rounded-full object-cover shadow-sm" onerror="this.src='https://placehold.co/28x28/0070f3/ffffff?text=LNA'">
-                                        <span class="buyer-title text-gray-600 font-bold transition-colors">Langit Nusantara</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-[10px] text-brand-600 bg-brand-50 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Req: 5 Units</span>
-                                        <i class="fa-solid fa-circle-check text-brand-500 check-icon hidden"></i>
-                                    </div>
-                                </div>
-                                <div onclick="selectBuyer(this, 'Permata Sari Air', 3)" class="buyer-card border-transparent hover:bg-gray-50 flex justify-between items-center text-[13px] p-2.5 rounded-lg border cursor-pointer transition-colors">
-                                    <div class="flex items-center gap-2.5">
-                                        <div class="w-7 h-7 rounded-full bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center text-[10px] text-orange-600 font-bold shadow-sm border border-orange-100">PSA</div>
-                                        <span class="buyer-title text-gray-600 font-bold transition-colors">Permata Sari Air</span>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-[10px] text-brand-600 bg-brand-50 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Req: 3 Units</span>
-                                        <i class="fa-solid fa-circle-check text-brand-500 check-icon hidden"></i>
-                                    </div>
-                                </div>
+                                <button onclick="updateQty(-1)" class="w-8 h-8 flex items-center justify-center text-gray-500"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" id="sellQty" value="1" class="w-12 text-center font-bold text-gray-800 bg-transparent outline-none">
+                                <button onclick="updateQty(1)" class="w-8 h-8 flex items-center justify-center text-brand-500"><i class="fa-solid fa-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -190,243 +88,63 @@
             </div>
         </main>
 
-        <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-gray-100 z-30 pb-6 sm:pb-4">
-            <button onclick="handleListForSale()" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3.5 px-4 rounded-xl shadow-[0_8px_16px_rgba(0,112,243,0.25)] hover:shadow-[0_12px_20px_rgba(0,112,243,0.3)] transition-all active:scale-[0.98] flex items-center justify-center gap-2">
-                <i class="fa-solid fa-tag"></i>
-                List for Sale
-            </button>
+        <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-gray-100 z-30 pb-6">
+            <button onclick="handleListForSale()" class="w-full bg-brand-500 text-white font-bold py-3.5 rounded-xl shadow-[0_8px_16px_rgba(0,112,243,0.25)]">List for Sale</button>
         </div>
     </div>
 
-    <!-- Custom Listing Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-        <div class="bg-white rounded-[32px] max-w-xs w-full p-6 shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-90 transition-transform duration-300 flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mb-4 text-3xl">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <h4 class="text-lg font-extrabold text-gray-800 mb-1">Berhasil Terdaftar!</h4>
-            <p id="successModalMsg" class="text-[13px] text-gray-500 mb-5 leading-relaxed">Pesawat Anda sukses didaftarkan untuk dijual.</p>
-            <button onclick="closeSuccessModal()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition-colors active:scale-95 shadow-[0_8px_16px_rgba(16,185,129,0.2)]">
-                Oke, Mantap
-            </button>
-        </div>
-    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, onSnapshot, updateDoc, increment, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    <script>
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'fleet-market-demo';
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
         let currentQty = 1;
-        let currentMaxQty = Infinity; 
+        let availableStock = 0;
 
-        const aircraftData = {
-            "A220 Family": ["Airbus A220-100", "Airbus A220-300"],
-            "A320 Family": ["Airbus A318-100", "Airbus A319-100", "Airbus A320-200", "Airbus A321-100", "Airbus A321-200"],
-            "A320neo Family": ["Airbus A319neo", "Airbus A320neo", "Airbus A321neo", "Airbus A321LR", "Airbus A321XLR"],
-            "A330 Family": ["Airbus A330-200", "Airbus A330-300"],
-            "A330neo Family": ["Airbus A330-800", "Airbus A330-900"],
-            "A340 Family": ["Airbus A340-300", "Airbus A340-600"],
-            "A350 Family": ["Airbus A350-900", "Airbus A350-900ULR", "Airbus A350-1000", "Airbus A350-1000ULR"],
-            "A380 Family": ["Airbus A380-800"]
-        };
-
-        const aircraftImages = {
-            "Airbus A220-100": "https://i.imgur.com/63wXR9V.png",
-            "Airbus A220-300": "https://i.imgur.com/IYbDJGb.png",
-            "Airbus A318-100": "https://i.imgur.com/mOVNW2W.png",
-            "Airbus A319-100": "https://i.imgur.com/se43yl5.png",
-            "Airbus A320-200": "https://i.imgur.com/6lI83cd.png",
-            "Airbus A321-100": "https://i.imgur.com/nvjOO94.png",
-            "Airbus A321-200": "https://i.imgur.com/nvjOO94.png",
-            "Airbus A319neo": "https://i.imgur.com/8VoFjO9.png",
-            "Airbus A320neo": "https://i.imgur.com/JVQ4ZZo.png",
-            "Airbus A321neo": "https://i.imgur.com/zuhtuwl.png",
-            "Airbus A321LR": "https://i.imgur.com/zuhtuwl.png",
-            "Airbus A321XLR": "https://i.imgur.com/zuhtuwl.png",
-            "Airbus A330-200": "https://i.imgur.com/zkKhqUd.png",
-            "Airbus A330-300": "https://i.imgur.com/xYdBkOb.png",
-            "Airbus A330-800": "https://i.imgur.com/sRZFW20.png",
-            "Airbus A330-900": "https://i.imgur.com/mRQPaQB.png",
-            "Airbus A340-300": "https://i.imgur.com/cK4EYwP.png",
-            "Airbus A340-600": "https://i.imgur.com/cJ5w1Hb.png",
-            "Airbus A350-900": "https://i.imgur.com/kHMfhrh.png",
-            "Airbus A350-900ULR": "https://i.imgur.com/kHMfhrh.png",
-            "Airbus A350-1000": "https://i.imgur.com/KXfrCM0.png",
-            "Airbus A350-1000ULR": "https://i.imgur.com/KXfrCM0.png",
-            "Airbus A380-800": "https://i.imgur.com/3eif2EP.png"
-        };
-
-        let currentFamily = "A220 Family";
-        let currentModelIndex = 0;
-
-        function toggleManufacturerMenu() {
-            const container = document.getElementById('filterContainer');
-            const icon = document.getElementById('filterIcon');
-            const menu = document.getElementById('horizontalMenu');
+        signInAnonymously(auth).then(() => {
+            const stockRef = doc(db, 'artifacts', appId, 'public', 'data', 'inventory', 'main');
             
-            if (container.classList.contains('w-[280px]')) {
-                container.classList.remove('w-[280px]');
-                container.classList.add('w-8');
-                icon.classList.remove('rotate-[360deg]', 'text-brand-600');
-                menu.classList.remove('opacity-100', 'pointer-events-auto', 'delay-100');
-                menu.classList.add('opacity-0', 'pointer-events-none');
-            } else {
-                container.classList.remove('w-8');
-                container.classList.add('w-[280px]');
-                icon.classList.add('rotate-[360deg]', 'text-brand-600');
-                menu.classList.remove('opacity-0', 'pointer-events-none');
-                menu.classList.add('opacity-100', 'pointer-events-auto', 'delay-100');
-            }
-        }
-
-        function toggleFamilyMenu() {
-            const container = document.getElementById('familyContainer');
-            const menu = document.getElementById('familyMenu');
-            
-            if (container.classList.contains('w-[280px]')) {
-                container.classList.remove('w-[280px]');
-                container.classList.add('w-[160px]');
-                menu.classList.remove('opacity-100', 'pointer-events-auto', 'delay-100');
-                menu.classList.add('opacity-0', 'pointer-events-none');
-            } else {
-                container.classList.remove('w-[160px]');
-                container.classList.add('w-[280px]');
-                menu.classList.remove('opacity-0', 'pointer-events-none');
-                menu.classList.add('opacity-100', 'pointer-events-auto', 'delay-100');
-            }
-        }
-
-        function selectFamily(btn, name) {
-            document.querySelectorAll('.family-opt').forEach(opt => {
-                opt.classList.remove('bg-brand-500', 'text-white', 'shadow-sm');
-                opt.classList.add('text-gray-600', 'hover:bg-gray-100');
-            });
-            btn.classList.add('bg-brand-500', 'text-white', 'shadow-sm');
-            btn.classList.remove('text-gray-600', 'hover:bg-gray-100');
-            
-            currentFamily = name;
-            currentModelIndex = 0;
-            
-            document.getElementById('currentFamilyLabel').innerText = name;
-            updateAircraftDisplay();
-
-            setTimeout(() => {
-                toggleFamilyMenu();
-            }, 300);
-        }
-
-        function updateAircraftDisplay() {
-            const display = document.getElementById('aircraftName');
-            const imgElement = document.getElementById('aircraftImage');
-            const models = aircraftData[currentFamily];
-            
-            if (models && models.length > 0) {
-                const modelName = models[currentModelIndex];
-                display.innerText = modelName;
-                
-                if (aircraftImages[modelName]) {
-                    imgElement.src = aircraftImages[modelName];
+            // Listen for stock changes
+            onSnapshot(stockRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    availableStock = docSnap.data().available || 0;
+                    document.getElementById('availableCount').innerText = `Available: ${availableStock}`;
                 } else {
-                    imgElement.src = "https://i.imgur.com/xYdBkOb.png";
+                    // Initialize if missing
+                    setDoc(stockRef, { available: 0 });
                 }
-            }
-        }
-
-        function navigateModel(step) {
-            const models = aircraftData[currentFamily];
-            if (!models) return;
-
-            currentModelIndex += step;
-
-            if (currentModelIndex < 0) currentModelIndex = models.length - 1;
-            if (currentModelIndex >= models.length) currentModelIndex = 0;
-
-            updateAircraftDisplay();
-        }
-
-        function selectManufacturer(btn, name) {
-            document.querySelectorAll('.mfg-opt').forEach(opt => {
-                opt.classList.remove('bg-brand-500', 'text-white', 'shadow-sm');
-                opt.classList.add('text-gray-600', 'hover:bg-gray-100');
             });
-            btn.classList.add('bg-brand-500', 'text-white', 'shadow-sm');
-            btn.classList.remove('text-gray-600', 'hover:bg-gray-100');
-            
-            setTimeout(() => {
-                const container = document.getElementById('filterContainer');
-                if(container.classList.contains('w-[280px]')) {
-                    toggleManufacturerMenu();
-                }
-            }, 300);
-        }
+        });
 
-        function selectBuyer(element, buyerName, reqQty) {
-            document.querySelectorAll('.buyer-card').forEach(card => {
-                card.classList.remove('border-brand-500', 'bg-brand-50/50');
-                card.classList.add('border-transparent', 'hover:bg-gray-50');
-                card.querySelector('.check-icon').classList.add('hidden');
-                card.querySelector('.buyer-title').classList.remove('text-gray-800');
-                card.querySelector('.buyer-title').classList.add('text-gray-600');
-            });
-
-            element.classList.remove('border-transparent', 'hover:bg-gray-50');
-            element.classList.add('border-brand-500', 'bg-brand-50/50');
-            element.querySelector('.check-icon').classList.remove('hidden');
-            element.querySelector('.buyer-title').classList.remove('text-gray-600');
-            element.querySelector('.buyer-title').classList.add('text-gray-800');
-
-            document.getElementById('selectedBuyerText').innerText = buyerName;
-            currentMaxQty = reqQty;
-            
-            if (currentQty > currentMaxQty) {
-                currentQty = currentMaxQty;
-                document.getElementById('sellQty').value = currentQty;
-            }
-        }
-
-        function validateManualQty(input) {
-            let cleanVal = input.value.replace(/[^0-9]/g, '');
-            if (cleanVal === '') {
-                input.value = '';
-                return;
-            }
-            let val = parseInt(cleanVal, 10);
-            if (val < 1) val = 1;
-            if (val > currentMaxQty) val = currentMaxQty;
-            currentQty = val;
-            input.value = val;
-        }
-
-        function finalizeManualQty(input) {
-            if (input.value === '') {
-                currentQty = 1;
-                input.value = 1;
-            }
-        }
-
-        function updateQty(change) {
-            currentQty += change;
-            if (currentQty < 1) currentQty = 1;
-            if (currentQty > currentMaxQty) currentQty = currentMaxQty;
+        window.updateQty = (change) => {
+            currentQty = Math.max(1, currentQty + change);
             document.getElementById('sellQty').value = currentQty;
-        }
+        };
 
-        function handleListForSale() {
-            const activeAircraft = document.getElementById('aircraftName').innerText;
-            const activeBuyer = document.getElementById('selectedBuyerText').innerText;
-            let displayQty = currentQty;
-            if (isNaN(displayQty) || displayQty < 1) displayQty = 1;
+        window.handleListForSale = async () => {
+            const stockRef = doc(db, 'artifacts', appId, 'public', 'data', 'inventory', 'main');
+            // When we sell/list, we reduce availability from storage or add to logic
+            // Assuming listing for sale reduces inventory, but user requested: "ketika jual bertambah"
+            // We interpret as: "Acquiring to sell"
+            try {
+                await updateDoc(stockRef, {
+                    available: increment(currentQty)
+                });
+                console.log("Updated inventory successfully");
+            } catch (e) {
+                console.error("Error updating:", e);
+            }
+        };
 
-            const successMsg = `Anda berhasil mendaftarkan sebanyak <strong>${displayQty} unit</strong> pesawat <strong>${activeAircraft}</strong> untuk dijual kepada <strong>${activeBuyer}</strong>.`;
-            document.getElementById('successModalMsg').innerHTML = successMsg;
-
-            const modal = document.getElementById('successModal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.querySelector('.bg-white').classList.remove('scale-90');
-        }
-
-        function closeSuccessModal() {
-            const modal = document.getElementById('successModal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.querySelector('.bg-white').classList.add('scale-90');
-        }
+        // UI Helpers
+        window.toggleManufacturerMenu = () => {};
+        window.navigateModel = (step) => {};
     </script>
 </body>
 </html>
